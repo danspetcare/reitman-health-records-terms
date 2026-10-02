@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Reitman Health Records — returning to the app</title>
+<style>body{font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;max-width:640px;margin:60px auto;padding:0 20px;color:#1f2328}</style></head>
+<body><p id="m">Returning to the Reitman Health Records app on your computer…</p>
+<script>
+(function(){
+  // Static relay: some hospital firewalls reject a redirect address on localhost, so the
+  // hospital sends the browser here instead. This page only forwards the same query string
+  // to the app's local callback. Nothing is stored or sent anywhere else.
+  var q = window.location.search || "";
+  if (/^\?(.*&)?(code|error|state)=/.test(q)) {
+    window.location.replace("https://localhost:8765/callback" + q);
+  } else {
+    document.getElementById("m").textContent = "Nothing to forward. Start a pull from the app first.";
+  }
+})();
+</script>
+<noscript><p>JavaScript is required to return to the app.</p></noscript>
+</body></html>
